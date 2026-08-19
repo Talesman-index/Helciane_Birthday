@@ -508,7 +508,7 @@ function initKunoichiProposal() {
 
     noBtn.style.display = 'none';
     yesBtn.style.transform = 'scale(1.15)';
-    yesBtn.innerHTML = 'OUI ! 💖🥷✨ (DÉCISION SCELLÉE !)';
+    yesBtn.innerHTML = 'OUI ! (DÉCISION SCELLÉE !)';
   });
 }
 
