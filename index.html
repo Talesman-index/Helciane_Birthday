@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Helciane — SUGAR CRUSH 23 ANS 💖✨</title>
+  <meta name="description" content="Joyeux 23ème Anniversaire Helciane ! Édition spéciale Sugar Crush magazine avec animations interactives.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@700&family=Outfit:wght@400;600;800;900&family=Permanent+Marker&family=Press+Start+2P&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Canvas for Confetti & Particles -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Optimized Audio Element -->
+  <audio id="bg-music" preload="auto" loop volume="1.0">
+    <source src="assets/audio/cheri-cheri-lady.mp3" type="audio/mpeg">
+    <source src="assets/audio/cheri-cheri-lady.m4a" type="audio/mp4">
+  </audio>
+
+  <!-- Autoplay Prompt Toast Banner -->
+  <div class="audio-prompt-banner" id="audio-prompt-banner">
+    <span class="audio-prompt-pulse">🎵</span>
+    <span class="audio-prompt-text">Lancer <strong>Cheri Cheri Lady</strong> ✨</span>
+    <button class="audio-prompt-btn" id="audio-start-btn">ÉCOUTER ▶</button>
+  </div>
+
+  <!-- Audio Controls Bar (Retro Walkman Style) -->
+  <div class="walkman-bar" id="walkman-bar">
+    <div class="walkman-brand">🎵 CHERI CHERI LADY — MODERN TALKING</div>
+    <button class="walkman-btn" id="music-play-btn" title="Jouer la musique d'anniversaire">
+      <span class="btn-icon">▶</span> <span class="btn-label">PLAY MUSIC</span>
+    </button>
+    <div class="equalizer" id="equalizer">
+      <span class="eq-bar"></span><span class="eq-bar"></span><span class="eq-bar"></span><span class="eq-bar"></span>
+    </div>
+    <button class="party-mode-btn" id="party-btn">
+      <span class="party-sparkle">✨</span> PARTY MODE !
+    </button>
+  </div>
+
+  <!-- Header Navigation -->
+  <header class="main-header">
+    <div class="logo-badge">HC • 23</div>
+    <div class="header-dedication">
+      Désolé pour le retard de la part de ton divin.. le TALESMAN 👑✨
+    </div>
+  </header>
+
+  <main>
+    <!-- SECTION 1: HERO 3D MAGAZINE POSTER -->
+    <section class="hero-section" id="hero-poster">
+      <div class="section-intro">
+        <span class="tag-pill">💖 SPECIAL BIRTHDAY EDITION 💖</span>
+        <h2 class="subhead">Survolez et déplacez l'affiche pour voir l'effet 3D !</h2>
+      </div>
+
+      <!-- 3D Card Container -->
+      <div class="poster-3d-wrapper" id="poster-wrapper">
+        <div class="poster-card" id="poster-card">
+          <!-- Glossy reflection overlay -->
+          <div class="poster-shine" id="poster-shine"></div>
+          <!-- Vintage paper texture fold overlay -->
+          <div class="paper-texture"></div>
+
+          <!-- Main Poster Image -->
+          <img src="assets/images/helciane-poster.jpg" alt="Helciane Sugar Crush 23 Ans Poster" class="poster-img" id="main-poster-img">
+
+          <!-- Dynamic Interactive Sticker Overlays -->
+          <div class="sticker-layer">
+
+            <div class="interactive-sticker sticker-hearts" data-sound="heart" title="Cliquez-moi !">
+              <span class="hearts-8bit">♥♥♥</span>
+            </div>
+
+            <div class="interactive-sticker sticker-swirl" data-sound="pop" title="Déplacez-moi !">
+              <div class="naruto-spiral">🌀</div>
+            </div>
+
+            <div class="interactive-sticker sticker-title-script" data-sound="cheer">
+              Helciane
+            </div>
+
+            <div class="interactive-sticker sticker-age-badge" data-sound="sparkle">
+              23 ANS
+            </div>
+
+            <div class="interactive-sticker sticker-barcode" data-sound="beep">
+              <div class="barcode-lines">||| | |||| || | |||</div>
+              <span class="barcode-num">23-08-2026</span>
+            </div>
+
+            <div class="interactive-sticker sticker-arc-logo">
+              ARC
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="poster-caption">
+        <p class="hint-text">💡 <em>Astuce : Cliquez sur les stickers pour débloquer des surprises sonores et visuelles !</em></p>
+      </div>
+    </section>
+
+    <!-- STATS COUNTER BAR -->
+    <section class="stats-bar">
+      <div class="stat-item">
+        <span class="stat-val" id="days-counter">8 395</span>
+        <span class="stat-lbl">Jours de Glamour</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-val">23</span>
+        <span class="stat-lbl">Bougies & Étoiles</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-val">100%</span>
+        <span class="stat-lbl">Niveau de Sugar Crush</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-val">∞</span>
+        <span class="stat-lbl">Vibes Inégalables</span>
+      </div>
+    </section>
+
+    <!-- SECTION 2: INTERACTIVE BIRTHDAY CAKE & CANDLE BLOW -->
+    <section class="cake-section" id="cake-section">
+      <div class="cake-container-card">
+        <div class="cake-header">
+          <span class="badge-y2k">🎂 MOMENT BOUGIES 🕯️</span>
+          <h2 class="cake-title">"Another Year to be Sexy"</h2>
+          <p class="cake-desc">Cliquez sur les bougies ou sur le bouton pour les souffler et faire un vœu !</p>
+        </div>
+
+        <div class="cake-photo-wrapper">
+          <!-- Photoshoot Photo with Cake -->
+          <img src="assets/images/helciane-cake.jpg" alt="Helciane avec son gâteau d'anniversaire" class="cake-photo">
+
+          <!-- Interactive Flames Overlay positioned on the cake -->
+          <div class="candles-overlay" id="candles-overlay">
+            <div class="candle-flame active" data-index="1" title="Souffler cette bougie">🕯️<span class="spark-glow">🔥</span></div>
+            <div class="candle-flame active" data-index="2" title="Souffler cette bougie">🕯️<span class="spark-glow">🔥</span></div>
+            <div class="candle-flame active" data-index="3" title="Souffler cette bougie">🕯️<span class="spark-glow">🔥</span></div>
+          </div>
+        </div>
+
+        <div class="cake-actions">
+          <button class="blow-btn" id="blow-btn">
+            💨 SOUFFLER TOUTES LES BOUGIES !
+          </button>
+          <div class="wish-reveal-box hidden" id="wish-reveal-box">
+            <span class="wish-icon">🎉</span>
+            <p class="wish-text"><strong>VŒU EXAUCÉ !</strong><br>Que cette 23ème année t'apporte bonheur, succès, amour et encore plus de style ! ✨👑</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: Y2K PHOTO GALLERY / MAGAZINE SPREAD -->
+    <section class="gallery-section" id="gallery-section">
+      <div class="section-title-wrap">
+        <h2 class="section-title">SUGAR GALLERY • LOOKBOOK</h2>
+        <p class="section-subtitle">Moments iconiques & clichés collectors d'Helciane</p>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-card card-polaroid" data-tilt>
+          <div class="card-inner">
+            <img src="assets/images/helciane-poster.jpg" alt="Helciane Cover Poster">
+            <div class="card-caption">
+              <span class="tag">COVER STORY</span>
+              <h4>Sugar Crush Edition</h4>
+              <p>23 Ans • Pure Slay Energy</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-card card-polaroid" data-tilt>
+          <div class="card-inner">
+            <img src="assets/images/helciane-cake.jpg" alt="Helciane Birthday Cake">
+            <div class="card-caption">
+              <span class="tag">SWEET 23</span>
+              <h4>Another Year To Be Sexy</h4>
+              <p>Pink Cake & Vintage Vibe</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-card card-polaroid" data-tilt>
+          <div class="card-inner">
+            <img src="assets/images/helciane-magnetic.jpg" alt="Helciane Magnetic Energy Poster">
+            <div class="card-caption">
+              <span class="tag">MAGNETIC ENERGY</span>
+              <h4>Grace & Ambition Edition</h4>
+              <p>This is your sign to keep going 💖</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-card card-polaroid card-sticker-decorated" data-tilt>
+          <div class="card-inner">
+            <img src="assets/images/y2k_stickers.jpg" alt="Stickers & Moodboard">
+            <div class="card-caption">
+              <span class="tag">STICKER PACK</span>
+              <h4>Y2K Pop Moodboard</h4>
+              <p>Glitter & Retro Vibes</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="footer-content">
+      <div class="footer-logo">SUGAR CRUSH • HELCIANE 23</div>
+      <p>Conçu spécialement avec ❤️ pour célébrer le 23ème anniversaire d'Helciane.</p>
+      <p class="copyright">© 2026 All Rights Reserved • Birthday Special Edition</p>
+    </div>
+  </footer>
+
+  <!-- Main JavaScript File -->
+  <script src="script.js"></script>
+</body>
+</html>
