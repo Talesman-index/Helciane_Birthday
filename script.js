@@ -259,18 +259,42 @@ function initWebAudioSynth() {
     });
   }
 
+  const introSplash = document.getElementById('intro-splash');
+  const splashEnterBtn = document.getElementById('splash-enter-btn');
+
+  function dismissSplash() {
+    if (introSplash) {
+      introSplash.classList.add('dismissed');
+      setTimeout(() => {
+        introSplash.style.display = 'none';
+      }, 500);
+    }
+  }
+
+  function startMusicAndDismiss() {
+    startMusic();
+    dismissSplash();
+  }
+
+  if (splashEnterBtn) {
+    splashEnterBtn.addEventListener('click', startMusicAndDismiss);
+  }
+  if (introSplash) {
+    introSplash.addEventListener('click', startMusicAndDismiss);
+  }
+
   // Autoplay & Instant Unlock on First Interaction
   function tryAutoplay() {
     startMusic();
   }
 
   // Attempt instant autoplay
-  setTimeout(tryAutoplay, 300);
+  setTimeout(tryAutoplay, 200);
 
   // Global first-interaction listener to bypass browser autoplay restrictions
   const autoUnlockEvents = ['click', 'touchstart', 'mousemove', 'scroll', 'keydown'];
   function unlockAudioOnGesture() {
-    tryAutoplay();
+    startMusicAndDismiss();
     autoUnlockEvents.forEach(evt => document.removeEventListener(evt, unlockAudioOnGesture));
   }
   autoUnlockEvents.forEach(evt => document.addEventListener(evt, unlockAudioOnGesture, { once: true }));

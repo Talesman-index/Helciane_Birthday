@@ -19,16 +19,21 @@
   <canvas id="confetti-canvas"></canvas>
 
   <!-- Optimized Audio Element -->
-  <audio id="bg-music" preload="auto" loop volume="1.0">
+  <audio id="bg-music" autoplay preload="auto" loop volume="1.0">
     <source src="assets/audio/cheri-cheri-lady.mp3" type="audio/mpeg">
     <source src="assets/audio/cheri-cheri-lady.m4a" type="audio/mp4">
   </audio>
 
-  <!-- Autoplay Prompt Toast Banner -->
-  <div class="audio-prompt-banner" id="audio-prompt-banner">
-    <span class="audio-prompt-pulse">🎵</span>
-    <span class="audio-prompt-text">Lancer <strong>Cheri Cheri Lady</strong> ✨</span>
-    <button class="audio-prompt-btn" id="audio-start-btn">ÉCOUTER ▶</button>
+  <!-- Interactive Intro Splash Screen Overlay -->
+  <div class="intro-splash" id="intro-splash">
+    <div class="splash-card">
+      <span class="splash-badge">👑 EDITION SPÉCIALE 23 ANS</span>
+      <h1 class="splash-title">HELCIANE</h1>
+      <p class="splash-sub">SUGAR CRUSH MAGAZINE • 2026</p>
+      <button class="splash-enter-btn" id="splash-enter-btn">
+        💖 CLIQUEZ POUR ENTRER & ÉCOUTER LA MUSIQUE 🎵
+      </button>
+    </div>
   </div>
 
   <!-- Audio Controls Bar (Retro Walkman Style) -->

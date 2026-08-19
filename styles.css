@@ -125,6 +125,86 @@ body {
   50% { transform: translateX(-50%) translateY(-6px); }
 }
 
+/* Intro Splash Screen Overlay */
+.intro-splash {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  background: radial-gradient(circle at center, #0d4b85 0%, #082342 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.intro-splash.dismissed {
+  opacity: 0;
+  transform: scale(1.08);
+  pointer-events: none;
+}
+
+.splash-card {
+  background: rgba(13, 14, 21, 0.9);
+  border: 3px solid var(--color-yellow);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 30px rgba(255, 42, 133, 0.5);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 28px;
+  padding: 40px 30px;
+  text-align: center;
+  max-width: 440px;
+  width: 100%;
+}
+
+.splash-badge {
+  display: inline-block;
+  background: var(--color-pink);
+  color: white;
+  font-family: var(--font-pixel);
+  font-size: 0.65rem;
+  padding: 6px 12px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+.splash-title {
+  font-family: var(--font-title);
+  font-size: 3.5rem;
+  color: var(--color-yellow);
+  text-shadow: 4px 4px 0px var(--color-pink);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.splash-sub {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  letter-spacing: 2px;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+.splash-enter-btn {
+  background: linear-gradient(135deg, var(--color-yellow), #FF9100);
+  color: var(--color-dark);
+  border: none;
+  padding: 14px 24px;
+  border-radius: 50px;
+  font-family: var(--font-body);
+  font-weight: 900;
+  font-size: 0.95rem;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(255, 229, 0, 0.6);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+  animation: pulseGlow 1.5s infinite alternate;
+}
+
+.splash-enter-btn:hover {
+  transform: scale(1.05);
+}
+
 /* --------------------------------------------------------------------------
    WALKMAN AUDIO BAR & PARTY MODE
    -------------------------------------------------------------------------- */
