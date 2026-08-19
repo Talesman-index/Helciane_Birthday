@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCandleBlowEngine();
   initConfettiCanvas();
   initGuestbookWall();
+  initKunoichiProposal();
 });
 
 /* ==========================================================================
@@ -429,6 +430,21 @@ function playSynthSound(type) {
       o.start(now + i * 0.06);
       o.stop(now + i * 0.06 + 0.3);
     });
+  } else if (type === 'laugh') {
+    // Cute Machiavellian Laugh Synth sound (Mwahaha 😈💖)
+    [300, 450, 250, 500, 280, 600].forEach((f, i) => {
+      const o = audioCtx.createOscillator();
+      const g = audioCtx.createGain();
+      o.type = 'sawtooth';
+      o.frequency.setValueAtTime(f, now + i * 0.12);
+      o.frequency.exponentialRampToValueAtTime(f * 0.7, now + i * 0.12 + 0.1);
+      g.gain.setValueAtTime(0.18, now + i * 0.12);
+      g.gain.exponentialRampToValueAtTime(0.001, now + i * 0.12 + 0.11);
+      o.connect(g);
+      g.connect(audioCtx.destination);
+      o.start(now + i * 0.12);
+      o.stop(now + i * 0.12 + 0.11);
+    });
   } else {
     // Pop / Beep
     osc.type = 'sine';
@@ -439,6 +455,61 @@ function playSynthSound(type) {
     osc.start(now);
     osc.stop(now + 0.1);
   }
+}
+
+/* ==========================================================================
+   7. KUNOICHI PROPOSAL ENGINE (EVASIVE BUTTON & MACHIAVELLIAN RESULT)
+   ========================================================================== */
+function initKunoichiProposal() {
+  const yesBtn = document.getElementById('kunoichi-yes-btn');
+  const noBtn = document.getElementById('kunoichi-no-btn');
+  const resultBox = document.getElementById('kunoichi-result-box');
+  const container = document.getElementById('kunoichi-buttons-area');
+
+  if (!yesBtn || !noBtn || !container) return;
+
+  function moveNoButton() {
+    playSynthSound('pop');
+
+    const containerRect = container.getBoundingClientRect();
+    const btnRect = noBtn.getBoundingClientRect();
+
+    const maxLeft = containerRect.width - btnRect.width - 20;
+    const maxTop = containerRect.height - btnRect.height - 20;
+
+    const randomLeft = Math.floor(Math.random() * (maxLeft > 0 ? maxLeft : 120)) - 60;
+    const randomTop = Math.floor(Math.random() * (maxTop > 0 ? maxTop : 80)) - 40;
+
+    noBtn.style.position = 'relative';
+    noBtn.style.left = `${randomLeft}px`;
+    noBtn.style.top = `${randomTop}px`;
+    noBtn.style.transform = `scale(0.85) rotate(${(Math.random() - 0.5) * 30}deg)`;
+  }
+
+  // Evasive triggers for the "NON" button (Impossible to click)
+  noBtn.addEventListener('mouseenter', moveNoButton);
+  noBtn.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    moveNoButton();
+  }, { passive: false });
+  noBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    moveNoButton();
+  });
+
+  // Clicking "OUI !" triggers cute machiavellian laugh & result
+  yesBtn.addEventListener('click', () => {
+    playSynthSound('laugh');
+    triggerConfettiBurst(120);
+
+    if (resultBox) {
+      resultBox.classList.remove('hidden');
+    }
+
+    noBtn.style.display = 'none';
+    yesBtn.style.transform = 'scale(1.15)';
+    yesBtn.innerHTML = 'OUI ! 💖🥷✨ (DÉCISION SCELLÉE !)';
+  });
 }
 
 /* ==========================================================================
